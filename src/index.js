@@ -884,10 +884,10 @@ export default class Gantt {
     const scroll_pos =
       (hours_before_first_task / this.options.step) *
         this.options.column_width -
-      this.options.column_width;
+      this.options.column_width * 2;
     parent_element.scrollTo({
       left: scroll_pos,
-      behavior: first ? "instant" : "smooth",
+      behavior: first ? "auto" : "smooth",
     });
   }
 
