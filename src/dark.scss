@@ -12,6 +12,9 @@
   --gantt-accent-light: #8a8aff;
   --gantt-today-bg-color: #3e3e3e;
   --gantt-today-text-color: #ececec;
+  --gantt-popup-bg-color:#171B1F;
+  --gantt-popup-text-color:#ececec;
+  --gantt-popup-border-color: #3e3e3e;
 
   --gantt-bar-color-dark-hover: lighten(#616161, 5%);
   --gantt-accent-light-dark-hover: lighten(#8a8aff, 5%);
@@ -95,13 +98,14 @@
 
   .gantt-container {
     .popup-wrapper {
-      background-color: #333;
+      background-color: var(--gantt-popup-bg-color);
 
       .title {
-        border-color: var(--gantt-accent-light-dark-hover);
+        border-color: var(--gantt-popup-border-color);
       }
+      
       .pointer {
-        border-top-color: #333;
+        border-top-color:var(--gantt-popup-border-color);
       }
     }
   }

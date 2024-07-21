@@ -3,6 +3,8 @@
 :root {
   --gantt-bg-color: #fff;
   --gantt-popup-bg-color:#171B1F;
+  --gantt-popup-text-color:#ececec;
+  --gantt-popup-border-color: #3e3e3e;
   --gantt-bar-color: #fff;
   --gantt-bar-color-important: #94c4f4;
   --gantt-bar-stroke: #fff;
@@ -290,19 +292,19 @@
       margin-bottom: 5px;
       text-align: -webkit-center;
       text-align: center;
-      color: var(--gantt-text-light);
+      color: var(--gantt-popup-text-color);
     }
 
-    .subtitle {
-      color: var(--gantt-text-grey);
+    .subtitle {      
+      color: var(--gantt-popup-text-color);
     }
 
     .pointer {
       position: absolute;
       height: 5px;
       margin: 0 0 0 -5px;
-      border: 5px solid transparent;
-      border-bottom-color: rgba(0, 0, 0, 0.8);
+      border: 5px solid transparent;      
+      border-top-color:var(--gantt-popup-border-color);
     }
   }
 }
