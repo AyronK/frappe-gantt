@@ -58,6 +58,7 @@ export default class Gantt {
     // initialize with default view mode
     this.change_view_mode();
     this.bind_events();
+    this.hide_popup();
   }
 
   setup_wrapper(element) {
@@ -394,7 +395,7 @@ export default class Gantt {
     });
 
     $.attr(this.$svg, {
-      height: grid_height + this.options.padding + 100,
+      height: grid_height + this.options.padding,
       width: "100%",
     });
   }
