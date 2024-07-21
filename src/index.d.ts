@@ -29,6 +29,7 @@ declare namespace Gantt {
 
   interface Options {
     readonly?: boolean | undefined;
+    scroll_to?: "start" | "today" | undefined,
     header_height?: number | undefined;
     column_width?: number | undefined;
     step?: number | undefined;

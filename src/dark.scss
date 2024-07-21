@@ -1,5 +1,5 @@
 
-.dark {
+.gantt-dark {
   --gantt-bar-color: #616161;
   --gantt-bar-stroke: #c6ccd2;
   --gantt-stroke-color: #616161;
@@ -59,21 +59,21 @@
       .bar-wrapper {
         &:hover {
           .bar {
-            fill: lighten(var(--gantt-bar-color), 5);
+            fill: var(--gantt-bar-color-dark-hover);
           }
 
           .bar-progress {
-            fill: lighten(var(--gantt-accent-light), 5);
+            fill: var(--gantt-accent-light-dark-hover);
           }
         }
 
         &.active {
           .bar {
-            fill: lighten(var(--gantt-bar-color), 5);
+            fill: var(--gantt-bar-color-dark-hover);
           }
 
           .bar-progress {
-            fill: lighten(var(--gantt-accent-light), 5);
+            fill: var(--gantt-accent-light-dark-hover);
           }
         }
       }
@@ -92,7 +92,7 @@
       background-color: #333;
 
       .title {
-        border-color: lighten(var(--gantt-accent-light), 5);
+        border-color: var(--gantt-accent-light-dark-hover);
       }
       .pointer {
         border-top-color: #333;

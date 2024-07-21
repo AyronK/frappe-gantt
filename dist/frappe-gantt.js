@@ -1242,7 +1242,7 @@ var Gantt = (function () {
       this.setup_options(options);
       this.setup_tasks(tasks);
       // initialize with default view mode
-      this.change_view_mode();
+      this.change_view_mode(null, true);
       this.bind_events();
     }
 
@@ -1407,10 +1407,10 @@ var Gantt = (function () {
       this.change_view_mode();
     }
 
-    change_view_mode(mode = this.options.view_mode) {
+    change_view_mode(mode = this.options.view_mode, first) {
       this.update_view_scale(mode);
       this.setup_dates();
-      this.render();
+      this.render(first);
       // fire viewmode_change event
       this.trigger_event("view_change", [mode]);
     }
@@ -1527,7 +1527,7 @@ var Gantt = (function () {
       this.bind_bar_events();
     }
 
-    render() {
+    render(first) {
       this.clear();
       this.setup_layers();
       this.make_grid();
@@ -1537,7 +1537,7 @@ var Gantt = (function () {
       this.make_arrows();
       this.map_arrows_on_bars();
       this.set_width();
-      this.set_scroll_position(this.options.scroll_to);
+      this.set_scroll_position(this.options.scroll_to, first);
     }
 
     setup_layers() {
@@ -2051,7 +2051,7 @@ var Gantt = (function () {
       }
     }
 
-    set_scroll_position(date) {
+    set_scroll_position(date, first) {
       if (!date || date === "start") {
         date = this.gantt_start;
       } else if (date === "today") {
@@ -2070,7 +2070,10 @@ var Gantt = (function () {
         (hours_before_first_task / this.options.step) *
           this.options.column_width -
         this.options.column_width;
-      parent_element.scrollTo({ left: scroll_pos, behavior: "smooth" });
+      parent_element.scrollTo({
+        left: scroll_pos,
+        behavior: first ? "instant" : "smooth",
+      });
     }
 
     scroll_today() {
