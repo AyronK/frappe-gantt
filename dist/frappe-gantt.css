@@ -101,12 +101,18 @@
 .gantt-container .current-upper {
   position: fixed;
 }
+.gantt-container .side-header-wrapper {
+  position: absolute;
+  inset: 0;
+}
 .gantt-container .side-header {
-  position: fixed;
-  padding: 0 10px;
-  margin-right: 10px;
+  position: sticky;
+  display: flex;
+  inset: 0;
+  z-index: 20;
+  padding: 10px;
   background: white;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 400;
 }
 .gantt-container .today-button,
@@ -121,6 +127,7 @@
   padding: 4px 10px;
   border-radius: 8px;
   height: 25px;
+  margin-right: auto;
 }
 .gantt-container .viewmode-select {
   outline: none !important;

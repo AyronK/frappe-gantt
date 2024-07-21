@@ -296,15 +296,22 @@ export default class Bar {
       (e) =>
         (timeout = setTimeout(() => {
           this.show_popup(e.offsetX);
-          document.querySelector(`#${task_id}-highlight`).style.display =
-            "block";
+          const $highlightElement = document.querySelector(
+            `#${task_id}-highlight`,
+          );
+          if ($highlightElement) {
+            $highlightElement.style.display = "block";
+          }
         }, 200)),
     );
 
     $.on(this.group, "mouseleave", () => {
       clearTimeout(timeout);
       this.gantt.popup?.hide?.();
-      document.querySelector(`#${task_id}-highlight`).style.display = "none";
+      const $highlightElement = document.querySelector(`#${task_id}-highlight`);
+      if ($highlightElement) {
+        $highlightElement.style.display = "none";
+      }
     });
 
     $.on(this.group, this.gantt.options.popup_trigger, () => {

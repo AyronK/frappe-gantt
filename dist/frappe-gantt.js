@@ -699,15 +699,22 @@ var Gantt = (function () {
         (e) =>
           (timeout = setTimeout(() => {
             this.show_popup(e.offsetX);
-            document.querySelector(`#${task_id}-highlight`).style.display =
-              "block";
+            const $highlightElement = document.querySelector(
+              `#${task_id}-highlight`,
+            );
+            if ($highlightElement) {
+              $highlightElement.style.display = "block";
+            }
           }, 200)),
       );
 
       $.on(this.group, "mouseleave", () => {
         clearTimeout(timeout);
         this.gantt.popup?.hide?.();
-        document.querySelector(`#${task_id}-highlight`).style.display = "none";
+        const $highlightElement = document.querySelector(`#${task_id}-highlight`);
+        if ($highlightElement) {
+          $highlightElement.style.display = "none";
+        }
       });
 
       $.on(this.group, this.gantt.options.popup_trigger, () => {
@@ -1628,8 +1635,13 @@ var Gantt = (function () {
     }
 
     make_side_header() {
+      let $side_header_wrapper = document.createElement("div");
+      $side_header_wrapper.classList.add("side-header-wraper");
+
       let $side_header = document.createElement("div");
       $side_header.classList.add("side-header");
+
+      $side_header_wrapper.appendChild($side_header);
 
       // Create view mode change select
       if (this.options.view_mode_select) {
@@ -1667,19 +1679,7 @@ var Gantt = (function () {
         $side_header.appendChild($today_button);
       }
 
-      this.$header.appendChild($side_header);
-      const { left, y } = this.$header.getBoundingClientRect();
-      const width = Math.min(
-        this.$header.clientWidth,
-        this.$container.clientWidth,
-      );
-      $side_header.style.left =
-        left +
-        this.$container.scrollLeft +
-        width -
-        $side_header.clientWidth +
-        "px";
-      $side_header.style.top = y + 10 + "px";
+      this.$header.parentElement.appendChild($side_header_wrapper);
     }
 
     make_grid_ticks() {

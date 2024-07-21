@@ -450,8 +450,13 @@ export default class Gantt {
   }
 
   make_side_header() {
+    let $side_header_wrapper = document.createElement("div");
+    $side_header_wrapper.classList.add("side-header-wraper");
+
     let $side_header = document.createElement("div");
     $side_header.classList.add("side-header");
+
+    $side_header_wrapper.appendChild($side_header);
 
     // Create view mode change select
     if (this.options.view_mode_select) {
@@ -489,19 +494,7 @@ export default class Gantt {
       $side_header.appendChild($today_button);
     }
 
-    this.$header.appendChild($side_header);
-    const { left, y } = this.$header.getBoundingClientRect();
-    const width = Math.min(
-      this.$header.clientWidth,
-      this.$container.clientWidth,
-    );
-    $side_header.style.left =
-      left +
-      this.$container.scrollLeft +
-      width -
-      $side_header.clientWidth +
-      "px";
-    $side_header.style.top = y + 10 + "px";
+    this.$header.parentElement.appendChild($side_header_wrapper);
   }
 
   make_grid_ticks() {

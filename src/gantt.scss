@@ -63,12 +63,19 @@ $dark-blue: #2c94ec !default;
     position: fixed;
   }
 
+  .side-header-wrapper {
+    position: absolute;
+    inset:0;
+  }
+
   .side-header {
-    position: fixed;
-    padding: 0 10px;
-    margin-right: 10px;
+    position: sticky;
+    display: flex;
+    inset:0;
+    z-index: 20;
+    padding: 10px;
     background: white;
-    line-height: 20px;
+    line-height: 18px;
     font-weight: 400;
   }
 
@@ -84,6 +91,7 @@ $dark-blue: #2c94ec !default;
     padding: 4px 10px;
     border-radius: 8px;
     height: 25px;
+    margin-right: auto;
   }
 
   .viewmode-select {
