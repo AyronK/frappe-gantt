@@ -451,7 +451,7 @@ export default class Gantt {
 
   make_side_header() {
     let $side_header_wrapper = document.createElement("div");
-    $side_header_wrapper.classList.add("side-header-wraper");
+    $side_header_wrapper.classList.add("side-header-wrapper");
 
     let $side_header = document.createElement("div");
     $side_header.classList.add("side-header");
@@ -495,6 +495,7 @@ export default class Gantt {
     }
 
     this.$header.parentElement.appendChild($side_header_wrapper);
+    this.$headerWrapper = $side_header_wrapper;
   }
 
   make_grid_ticks() {
@@ -1240,6 +1241,7 @@ export default class Gantt {
   clear() {
     this.$svg.innerHTML = "";
     this.$header?.remove?.();
+    this.$headerWrapper?.remove?.();
     this.$current_highlight?.remove?.();
     this.popup?.hide?.();
   }

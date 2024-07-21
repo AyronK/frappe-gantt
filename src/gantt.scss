@@ -1,31 +1,32 @@
-@import "./dark.scss";
-
-$bar-color: #fff !default;
-$bar-color-important: #94c4f4 !default;
-$bar-stroke: #fff !default;
-$dark-stroke-color: #e0e0e0 !default;
-$stroke-color: #EBEEF0 !default;
-$light-bg: #f5f5f5 !default;
-$light-border-color: #ebeff2 !default;
-$light-yellow: #f6e796 !default;
-$holiday-color: #F9FAFA !default;
-$text-muted: #666 !default;
-$text-grey: #98A1A9;
-$text-light: #fff !default;
-$text-dark: #111 !default;
-$progress: #EBEEF0 !default;
-$handle-color: #dcdce4 !default;
-$handle-color-important: #94c4f4 !default;
-$light-blue: #c4c4e9 !default;
-$middle-blue: #62B2F9 !default;
-$dark-blue: #2c94ec !default;
-
+:root {
+  --gantt-bg-color: #fff;
+  --gant-popup-bg-color:#171B1F;
+  --gantt-bar-color: #fff;
+  --gantt-bar-color-important: #94c4f4;
+  --gantt-bar-stroke: #fff;
+  --gantt-dark-stroke-color: #e0e0e0;
+  --gantt-stroke-color: #EBEEF0;
+  --gantt-light-bg: #f5f5f5;
+  --gantt-light-border-color: #ebeff2;
+  --gantt-holiday-color: #F9FAFA;
+  --gantt-text-muted: #666;
+  --gantt-text-grey: #98A1A9;
+  --gantt-text-light: #fff;
+  --gantt-text-dark: #111;
+  --gantt-progress: #EBEEF0;
+  --gantt-handle-color: #dcdce4;
+  --gantt-handle-color-important: #94c4f4;
+  --gantt-accent-light: #c4c4e9;
+  --gantt-accent-mid: #62B2F9;
+  --gantt-accent-dark: #2c94ec;
+}
 
 .gantt-container {
   line-height: 14.5px;
+  background-color: var(--gantt-bg-color);
 
   .grid-header {
-    background-color: #ffffff;
+    background-color: var(--gantt-bg-color);
     position: sticky;
     top: 0;
     left: 0;
@@ -35,7 +36,7 @@ $dark-blue: #2c94ec !default;
   .lower-text,
   .upper-text {
     text-anchor: middle;
-    color: $text-dark;
+    color: var(--gantt-text-dark);
   }
 
   .upper-header {
@@ -65,16 +66,16 @@ $dark-blue: #2c94ec !default;
 
   .side-header-wrapper {
     position: absolute;
-    inset:0;
+    inset: 0;
   }
 
   .side-header {
     position: sticky;
     display: flex;
-    inset:0;
+    inset: 0;
     z-index: 20;
     padding: 10px;
-    background: white;
+    background-color: var(--gantt-bg-color);
     line-height: 18px;
     font-weight: 400;
   }
@@ -87,7 +88,7 @@ $dark-blue: #2c94ec !default;
     height: 25px;
     border-radius: 8px;
     border: none;
-    color: $text-dark;
+    color: var(--gantt-text-dark);
     padding: 4px 10px;
     border-radius: 8px;
     height: 25px;
@@ -107,7 +108,7 @@ $dark-blue: #2c94ec !default;
   }
 
   .date-highlight {
-    background-color: $progress;
+    background-color: var(--gantt-progress);
     border-radius: 12px;
     position: absolute;
     display: none;
@@ -115,13 +116,13 @@ $dark-blue: #2c94ec !default;
 
   .current-highlight {
     position: absolute;
-    background: $dark-blue;
+    background: var(--gantt-accent-dark);
     width: 1px;
   }
 
   .current-date-highlight {
-    background: $dark-blue;
-    color: $text-light;
+    background: var(--gantt-accent-dark);
+    color: var(--gantt-text-light);
     padding: 4px 8px;
     border-radius: 200px;
   }
@@ -136,34 +137,26 @@ $dark-blue: #2c94ec !default;
     fill: none;
   }
 
-
-
   .grid-row {
-    fill: #ffffff;
+    fill: var(--gantt-bar-color);
   }
 
-  // .grid-row:nth-child(even) {
-  //   fill: $light-bg;
-  // }
-
   .row-line {
-    stroke: $light-border-color;
+    stroke: var(--gantt-light-border-color);
   }
 
   .tick {
-    stroke: $stroke-color;
+    stroke: var(--gantt-stroke-color);
     stroke-width: 0.4;
 
     &.thick {
-      stroke: $dark-stroke-color;
+      stroke: var(--gantt-dark-stroke-color);
       stroke-width: 0.7;
     }
   }
 
-
-
   .holiday-highlight {
-    fill: $holiday-color;
+    fill: var(--gantt-holiday-color);
   }
 
   .arrow {
@@ -173,70 +166,68 @@ $dark-blue: #2c94ec !default;
   }
 
   .bar-wrapper .bar {
-    fill: $bar-color;
-    stroke: $bar-stroke;
+    fill: var(--gantt-bar-color);
+    stroke: var(--gantt-bar-stroke);
     stroke-width: 0;
     transition: stroke-width 0.3s ease;
   }
 
   .bar-progress {
-    fill: $progress;
+    fill: var(--gantt-progress);
   }
 
   .bar-expected-progress {
-    fill: $light-blue;
+    fill: var(--gantt-accent-light);
   }
 
   .bar-invalid {
     fill: transparent;
-    stroke: $bar-stroke;
+    stroke: var(--gantt-bar-stroke);
     stroke-width: 1;
     stroke-dasharray: 5;
 
     &~.bar-label {
-      fill: $text-light;
+      fill: var(--gantt-text-light);
     }
   }
 
   .bar-label {
-    fill: $text-dark;
+    fill: var(--gantt-text-dark);
     dominant-baseline: central;
-    // text-anchor: middle;
     font-family: Helvetica;
     font-size: 13px;
     font-weight: 400;
 
     &.big {
-      fill: $text-dark;
+      fill: var(--gantt-text-dark);
       text-anchor: start;
     }
   }
 
   .bar-wrapper.important {
     .bar {
-      fill: $bar-color-important;
+      fill: var(--gantt-bar-color-important);
     }
 
     .bar-progress {
-      fill: $dark-blue;
+      fill: var(--gantt-accent-dark);
     }
 
     .bar-label {
-      fill: $text-light;
+      fill: var(--gantt-text-light);
     }
 
     .handle {
-      fill: $handle-color-important;
+      fill: var(--gantt-handle-color-important);
     }
 
     .handle.progress {
-      fill: $text-light;
+      fill: var(--gantt-text-light);
     }
   }
 
-
   .handle {
-    fill: $handle-color;
+    fill: var(--gantt-handle-color);
     cursor: ew-resize;
     opacity: 0;
     visibility: hidden;
@@ -244,7 +235,7 @@ $dark-blue: #2c94ec !default;
   }
 
   .handle.progress {
-    fill: $text-muted;
+    fill: var(--gantt-text-muted);
   }
 
   .bar-wrapper {
@@ -264,7 +255,6 @@ $dark-blue: #2c94ec !default;
       border-radius: 3px;
     }
 
-
     &:hover {
       .bar {
         transition: transform 0.3s ease;
@@ -275,7 +265,6 @@ $dark-blue: #2c94ec !default;
       }
     }
   }
-
 
   .hide {
     display: none;
@@ -292,7 +281,7 @@ $dark-blue: #2c94ec !default;
     position: absolute;
     top: 0;
     left: 0;
-    background: #171B1F;
+    background: var(--gant-popup-bg-color);
     padding: 10px;
     border-radius: 5px;
     width: max-content;
@@ -301,16 +290,15 @@ $dark-blue: #2c94ec !default;
       opacity: 0 !important;
     }
 
-
     .title {
       margin-bottom: 5px;
       text-align: -webkit-center;
       text-align: center;
-      color: $text-light;
+      color: var(--gantt-text-light);
     }
 
     .subtitle {
-      color: $text-grey;
+      color: var(--gantt-text-grey);
     }
 
     .pointer {
