@@ -1636,14 +1636,8 @@ var Gantt = (function () {
     }
 
     make_side_header() {
-      let $side_header_wrapper = document.createElement("div");
-      $side_header_wrapper.classList.add("side-header-wrapper");
-
       let $side_header = document.createElement("div");
       $side_header.classList.add("side-header");
-
-      $side_header_wrapper.appendChild($side_header);
-
       // Create view mode change select
       if (this.options.view_mode_select) {
         const $select = document.createElement("select");
@@ -1680,8 +1674,7 @@ var Gantt = (function () {
         $side_header.appendChild($today_button);
       }
 
-      this.$header.parentElement.appendChild($side_header_wrapper);
-      this.$headerWrapper = $side_header_wrapper;
+      this.$header.parentElement.appendChild($side_header);
     }
 
     make_grid_ticks() {
@@ -2432,7 +2425,6 @@ var Gantt = (function () {
     clear() {
       this.$svg.innerHTML = "";
       this.$header?.remove?.();
-      this.$headerWrapper?.remove?.();
       this.$current_highlight?.remove?.();
       this.popup?.hide?.();
     }
