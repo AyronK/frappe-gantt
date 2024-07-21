@@ -42,6 +42,13 @@ declare namespace Gantt {
     date_format?: string | undefined;
     custom_popup_html?: string | ((task: EnrichedTask) => string) | undefined;
     language?: string | undefined;
+    show_expected_progress?: boolean | undefined;
+    highlight_weekend?: boolean | undefined;
+    auto_move_label?: boolean | undefined;
+    today_button?: boolean | undefined;
+    view_mode_select?: boolean | undefined;
+    popup_trigger?: string | undefined,
+    lines?: "both"|"vertical"|"horizontal",
     on_click?: ((task: EnrichedTask) => void) | undefined;
     on_date_change?:
       | ((task: EnrichedTask, start: Date, end: Date) => void)

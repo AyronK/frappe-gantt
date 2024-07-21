@@ -1,6 +1,6 @@
 {
   "name": "ayronk-frappe-gantt",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "A simple, modern, interactive gantt library for the web. Community fork.",
   "main": "src/index.js",
   "types": "src/index.d.ts",

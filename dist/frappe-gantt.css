@@ -9,7 +9,7 @@
   --gantt-text-light: #ececec;
   --gantt-text-dark: #f7f7f7;
   --gantt-accent-light: #8a8aff;
-  --gantt-today-bg: #3e3e3e;
+  --gantt-today-bg-color: #3e3e3e;
   --gantt-today-text-color: #ececec;
   --gantt-bar-color-dark-hover: lighten(#616161, 5%);
   --gantt-accent-light-dark-hover: lighten(#8a8aff, 5%);
@@ -102,7 +102,7 @@
   --gantt-accent-light: #c4c4e9;
   --gantt-accent-mid: #62B2F9;
   --gantt-accent-dark: #2c94ec;
-  --gantt-today-bg: #F4F5F6;
+  --gantt-today-bg-color: #F4F5F6;
   --gantt-today-text-color: #111;
 }
 
@@ -152,7 +152,6 @@
   inset: 0;
   z-index: 20;
   padding: 10px;
-  background-color: var(--gantt-bg-color);
   line-height: 18px;
   font-weight: 400;
 }
