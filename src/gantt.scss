@@ -22,9 +22,11 @@
   --gantt-handle-color-important: #94c4f4;
   --gantt-accent-light: #c4c4e9;
   --gantt-accent-mid: #62B2F9;
-  --gantt-accent-dark: #2c94ec;
+  --gantt-accent-dark: #121416;
   --gantt-today-bg-color: #F4F5F6;
   --gantt-today-text-color: #111;
+  --gantt-bar-color-dark-hover: darken(#f5f5f5, 5%);
+  --gantt-accent-light-dark-hover: darken(#c4c4e9, 5%);
 }
 
 .gantt-container {
@@ -239,6 +241,28 @@
 
   .handle.progress {
     fill: var(--gantt-text-muted);
+  }
+
+  .bar-wrapper {
+    &:hover {
+      .bar {
+        fill: var(--gantt-bar-color-hover);
+      }
+
+      .bar-progress {
+        fill: var(--gantt-accent-light-hover);
+      }
+    }
+
+    &.active {
+      .bar {
+        fill: var(--gantt-bar-color-hover);
+      }
+
+      .bar-progress {
+        fill: var(--gantt-accent-light-hover);
+      }
+    }
   }
 
   .bar-wrapper {
