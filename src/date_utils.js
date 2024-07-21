@@ -18,7 +18,7 @@ const SHORTENED = {
   September: "Sep",
   October: "Oct",
   November: "Nov",
-  December: "Dec"
+  December: "Dec",
 };
 
 export default {

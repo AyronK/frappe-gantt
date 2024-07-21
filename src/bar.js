@@ -31,10 +31,13 @@ export default class Bar {
     this.width = this.gantt.options.column_width * this.duration;
     this.progress_width =
       this.gantt.options.column_width *
-      this.duration *
-      (this.task.progress / 100) || 0;
+        this.duration *
+        (this.task.progress / 100) || 0;
     this.group = createSVG("g", {
-      class: "bar-wrapper" + (this.task.custom_class ? " " + this.task.custom_class : "") + (this.task.important ? ' important' : ''),
+      class:
+        "bar-wrapper" +
+        (this.task.custom_class ? " " + this.task.custom_class : "") +
+        (this.task.important ? " important" : ""),
       "data-id": this.task.id,
     });
     this.bar_group = createSVG("g", {
@@ -69,8 +72,8 @@ export default class Bar {
     this.compute_expected_progress();
     this.expected_progress_width =
       this.gantt.options.column_width *
-      this.duration *
-      (this.expected_progress / 100) || 0;
+        this.duration *
+        (this.expected_progress / 100) || 0;
   }
 
   draw() {
@@ -140,21 +143,20 @@ export default class Bar {
       class: "bar-progress",
       append_to: this.bar_group,
     });
-    const x = (date_utils.diff(this.task._start, this.gantt.gantt_start, 'hour') /
-      this.gantt.options.step) *
+    const x =
+      (date_utils.diff(this.task._start, this.gantt.gantt_start, "hour") /
+        this.gantt.options.step) *
       this.gantt.options.column_width;
 
     let $date_highlight = document.createElement("div");
-    $date_highlight.id = `${this.task.id}-highlight`
-    $date_highlight.classList.add('date-highlight')
-    $date_highlight.style.height = this.height * 0.8 + 'px'
-    $date_highlight.style.width = this.width + 'px'
-    $date_highlight.style.top = this.gantt.options.header_height - 25 + 'px'
-    $date_highlight.style.left = x + 'px'
-    this.$date_highlight = $date_highlight
-    this.gantt.$lower_header.prepend($date_highlight)
-
-
+    $date_highlight.id = `${this.task.id}-highlight`;
+    $date_highlight.classList.add("date-highlight");
+    $date_highlight.style.height = this.height * 0.8 + "px";
+    $date_highlight.style.width = this.width + "px";
+    $date_highlight.style.top = this.gantt.options.header_height - 25 + "px";
+    $date_highlight.style.left = x + "px";
+    this.$date_highlight = $date_highlight;
+    this.gantt.$lower_header.prepend($date_highlight);
 
     animateSVG(this.$bar_progress, "width", 0, this.progress_width);
   }
@@ -177,43 +179,44 @@ export default class Bar {
     requestAnimationFrame(() => this.update_label_position());
   }
   draw_thumbnail() {
-    let x_offset = 10, y_offset = 2;
+    let x_offset = 10,
+      y_offset = 2;
     let defs, clipPath;
 
-    defs = createSVG('defs', {
-      append_to: this.bar_group
+    defs = createSVG("defs", {
+      append_to: this.bar_group,
     });
 
-    createSVG('rect', {
-      id: 'rect_' + this.task.id,
+    createSVG("rect", {
+      id: "rect_" + this.task.id,
       x: this.x + x_offset,
       y: this.y + y_offset,
       width: this.image_size,
       height: this.image_size,
-      rx: '15',
-      class: 'img_mask',
-      append_to: defs
+      rx: "15",
+      class: "img_mask",
+      append_to: defs,
     });
 
-    clipPath = createSVG('clipPath', {
-      id: 'clip_' + this.task.id,
-      append_to: defs
+    clipPath = createSVG("clipPath", {
+      id: "clip_" + this.task.id,
+      append_to: defs,
     });
 
-    createSVG('use', {
-      href: '#rect_' + this.task.id,
-      append_to: clipPath
+    createSVG("use", {
+      href: "#rect_" + this.task.id,
+      append_to: clipPath,
     });
 
-    createSVG('image', {
+    createSVG("image", {
       x: this.x + x_offset,
       y: this.y + y_offset,
       width: this.image_size,
       height: this.image_size,
-      class: 'bar-img',
+      class: "bar-img",
       href: this.task.thumbnail,
-      clipPath: 'clip_' + this.task.id,
-      append_to: this.bar_group
+      clipPath: "clip_" + this.task.id,
+      append_to: this.bar_group,
     });
   }
 
@@ -283,21 +286,26 @@ export default class Bar {
   setup_click_event() {
     let task_id = this.task.id;
     $.on(this.group, "mouseover", (e) => {
-      this.gantt.trigger_event("hover", [this.task, e.screenX, e.screenY, e])
-    })
+      this.gantt.trigger_event("hover", [this.task, e.screenX, e.screenY, e]);
+    });
 
     let timeout;
-    $.on(this.group, "mouseenter", (e) => timeout = setTimeout(() => {
-      this.show_popup(e.offsetX)
-      document.querySelector(`#${task_id}-highlight`).style.display = 'block'
-    }, 200))
+    $.on(
+      this.group,
+      "mouseenter",
+      (e) =>
+        (timeout = setTimeout(() => {
+          this.show_popup(e.offsetX);
+          document.querySelector(`#${task_id}-highlight`).style.display =
+            "block";
+        }, 200)),
+    );
 
     $.on(this.group, "mouseleave", () => {
-      clearTimeout(timeout)
-      this.gantt.popup?.hide?.()
-      document.querySelector(`#${task_id}-highlight`).style.display = 'none'
-    })
-
+      clearTimeout(timeout);
+      this.gantt.popup?.hide?.();
+      document.querySelector(`#${task_id}-highlight`).style.display = "none";
+    });
 
     $.on(this.group, this.gantt.options.popup_trigger, () => {
       this.gantt.trigger_event("click", [this.task]);
@@ -353,11 +361,11 @@ export default class Bar {
         return;
       }
       this.update_attr(bar, "x", x);
-      this.$date_highlight.style.left = x + 'px'
+      this.$date_highlight.style.left = x + "px";
     }
     if (width) {
       this.update_attr(bar, "width", width);
-      this.$date_highlight.style.width = width + 'px'
+      this.$date_highlight.style.width = width + "px";
     }
     this.update_label_position();
     this.update_handle_position();
@@ -371,33 +379,36 @@ export default class Bar {
   }
 
   update_label_position_on_horizontal_scroll({ x, sx }) {
-    const container = document.querySelector('.gantt-container');
-    const label = this.group.querySelector('.bar-label');
-    const img = this.group.querySelector('.bar-img') || '';
-    const img_mask = this.bar_group.querySelector('.img_mask') || '';
+    const container = document.querySelector(".gantt-container");
+    const label = this.group.querySelector(".bar-label");
+    const img = this.group.querySelector(".bar-img") || "";
+    const img_mask = this.bar_group.querySelector(".img_mask") || "";
 
     let barWidthLimit = this.$bar.getX() + this.$bar.getWidth();
     let newLabelX = label.getX() + x;
-    let newImgX = img && img.getX() + x || 0;
-    let imgWidth = img && img.getBBox().width + 7 || 7;
+    let newImgX = (img && img.getX() + x) || 0;
+    let imgWidth = (img && img.getBBox().width + 7) || 7;
     let labelEndX = newLabelX + label.getBBox().width + 7;
     let viewportCentral = sx + container.clientWidth / 2;
 
-    if (label.classList.contains('big')) return;
+    if (label.classList.contains("big")) return;
 
     if (labelEndX < barWidthLimit && x > 0 && labelEndX < viewportCentral) {
-      label.setAttribute('x', newLabelX);
+      label.setAttribute("x", newLabelX);
       if (img) {
-        img.setAttribute('x', newImgX);
-        img_mask.setAttribute('x', newImgX);
+        img.setAttribute("x", newImgX);
+        img_mask.setAttribute("x", newImgX);
       }
-    } else if ((newLabelX - imgWidth) > this.$bar.getX() && x < 0 && labelEndX > viewportCentral) {
-      label.setAttribute('x', newLabelX);
+    } else if (
+      newLabelX - imgWidth > this.$bar.getX() &&
+      x < 0 &&
+      labelEndX > viewportCentral
+    ) {
+      label.setAttribute("x", newLabelX);
       if (img) {
-        img.setAttribute('x', newImgX);
-        img_mask.setAttribute('x', newImgX);
+        img.setAttribute("x", newImgX);
+        img_mask.setAttribute("x", newImgX);
       }
-
     }
   }
 
@@ -547,8 +558,8 @@ export default class Bar {
     this.$expected_bar_progress.setAttribute(
       "width",
       this.gantt.options.column_width *
-      this.duration *
-      (this.expected_progress / 100) || 0,
+        this.duration *
+        (this.expected_progress / 100) || 0,
     );
   }
 
@@ -562,33 +573,35 @@ export default class Bar {
   }
 
   update_label_position() {
-    const img_mask = this.bar_group.querySelector('.img_mask') || '';
+    const img_mask = this.bar_group.querySelector(".img_mask") || "";
     const bar = this.$bar,
       label = this.group.querySelector(".bar-label"),
-      img = this.group.querySelector('.bar-img');
-
+      img = this.group.querySelector(".bar-img");
 
     let padding = 5;
     let x_offset_label_img = this.image_size + 10;
-    const labelWidth = label.getBBox().width
-    const barWidth = bar.getWidth()
+    const labelWidth = label.getBBox().width;
+    const barWidth = bar.getWidth();
     if (labelWidth > barWidth) {
       label.classList.add("big");
       if (img) {
-        img.setAttribute('x', bar.getX() + bar.getWidth() + padding);
-        img_mask.setAttribute('x', bar.getX() + bar.getWidth() + padding);
-        label.setAttribute('x', bar.getX() + bar.getWidth() + x_offset_label_img);
+        img.setAttribute("x", bar.getX() + bar.getWidth() + padding);
+        img_mask.setAttribute("x", bar.getX() + bar.getWidth() + padding);
+        label.setAttribute(
+          "x",
+          bar.getX() + bar.getWidth() + x_offset_label_img,
+        );
       } else {
-        label.setAttribute('x', bar.getX() + bar.getWidth() + padding);
+        label.setAttribute("x", bar.getX() + bar.getWidth() + padding);
       }
     } else {
       label.classList.remove("big");
       if (img) {
-        img.setAttribute('x', bar.getX() + padding);
-        img_mask.setAttribute('x', bar.getX() + padding);
-        label.setAttribute('x', bar.getX() + barWidth / 2 + x_offset_label_img);
+        img.setAttribute("x", bar.getX() + padding);
+        img_mask.setAttribute("x", bar.getX() + padding);
+        label.setAttribute("x", bar.getX() + barWidth / 2 + x_offset_label_img);
       } else {
-        label.setAttribute('x', bar.getX() + barWidth / 2 - labelWidth / 2);
+        label.setAttribute("x", bar.getX() + barWidth / 2 - labelWidth / 2);
       }
     }
   }

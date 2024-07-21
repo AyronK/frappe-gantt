@@ -1,8 +1,10 @@
 {
-  "name": "frappe-gantt",
-  "version": "0.6.1",
-  "description": "A simple, modern, interactive gantt library for the web",
+  "name": "@ayronk/frappe-gantt",
+  "version": "0.7.0",
+  "description": "A simple, modern, interactive gantt library for the web. Community fork.",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "author": "AyronK",
   "scripts": {
     "start": "yarn run dev",
     "build": "rollup -c",
@@ -14,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/frappe/gantt.git"
+    "url": "https://github.com/AyronK/frappe-gantt"
   },
   "files": [
     "src",
@@ -29,12 +31,11 @@
     "interactive gantt",
     "project management"
   ],
-  "author": "Faris Ansari",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/frappe/gantt/issues"
+    "url": "https://github.com/AyronK/frappe-gantt/issues"
   },
-  "homepage": "https://github.com/frappe/gantt",
+  "homepage": "https://github.com/AyronK/frappe-gantt",
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.17.0",
@@ -48,5 +49,22 @@
   },
   "eslintIgnore": [
     "dist"
-  ]
+  ],  
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
+  "prettier": {
+    "endOfLine": "crlf",
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": false,
+    "semi": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "always",
+    "quoteProps": "as-needed"
+  }
 }
