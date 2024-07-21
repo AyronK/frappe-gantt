@@ -83,7 +83,7 @@
 
 :root {
   --gantt-bg-color: #fff;
-  --gant-popup-bg-color:#171B1F;
+  --gantt-popup-bg-color:#171B1F;
   --gantt-bar-color: #fff;
   --gantt-bar-color-important: #94c4f4;
   --gantt-bar-stroke: #fff;
@@ -310,7 +310,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: var(--gant-popup-bg-color);
+  background: var(--gantt-popup-bg-color);
   padding: 10px;
   border-radius: 5px;
   width: max-content;
