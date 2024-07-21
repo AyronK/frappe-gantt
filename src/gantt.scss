@@ -2,8 +2,8 @@
 
 :root {
   --gantt-bg-color: #fff;
-  --gantt-popup-bg-color:#171B1F;
-  --gantt-popup-text-color:#ececec;
+  --gantt-popup-bg-color:#f5f5f5;
+  --gantt-popup-text-color:#111;
   --gantt-popup-border-color: #3e3e3e;
   --gantt-bar-color: #fff;
   --gantt-bar-color-important: #94c4f4;
@@ -137,6 +137,10 @@
 
   .grid-row {
     fill: var(--gantt-bar-color);
+  }
+
+  .grid-row:nth-child(even) {
+    fill: var(--gantt-light-bg);
   }
 
   .row-line {
