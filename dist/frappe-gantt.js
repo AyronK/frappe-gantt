@@ -1242,7 +1242,7 @@ var Gantt = (function () {
       this.setup_options(options);
       this.setup_tasks(tasks);
       // initialize with default view mode
-      this.change_view_mode(null, true);
+      this.change_view_mode(this.options.view_mode, true);
       this.bind_events();
     }
 
