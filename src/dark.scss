@@ -99,11 +99,8 @@
   .gantt-container {
     .popup-wrapper {
       background-color: var(--gantt-popup-bg-color);
+      border-color: var(--gantt-popup-border-color);
 
-      .title {
-        border-color: var(--gantt-popup-border-color);
-      }
-      
       .pointer {
         border-top-color:var(--gantt-popup-border-color);
       }

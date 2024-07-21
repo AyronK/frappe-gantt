@@ -76,8 +76,6 @@
 }
 .gantt-dark .gantt-container .popup-wrapper {
   background-color: var(--gantt-popup-bg-color);
-}
-.gantt-dark .gantt-container .popup-wrapper .title {
   border-color: var(--gantt-popup-border-color);
 }
 .gantt-dark .gantt-container .popup-wrapper .pointer {
@@ -319,6 +317,7 @@
   top: 0;
   left: 0;
   background: var(--gantt-popup-bg-color);
+  border-color: var(--gantt-popup-border-color);
   padding: 10px;
   border-radius: 5px;
   width: max-content;
