@@ -116,6 +116,7 @@
     position: absolute;
     background: var(--gantt-accent-dark);
     width: 1px;
+    z-index: 10;
   }
 
   .current-date-highlight {
@@ -288,6 +289,7 @@
     padding: 10px;
     border-radius: 5px;
     width: max-content;
+    z-index: 20;
 
     &.hidden {
       opacity: 0 !important;
