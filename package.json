@@ -1,5 +1,5 @@
 {
-  "name": "@ayronk/frappe-gantt",
+  "name": "ayronk-frappe-gantt",
   "version": "0.7.0",
   "description": "A simple, modern, interactive gantt library for the web. Community fork.",
   "main": "src/index.js",
