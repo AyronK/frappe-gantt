@@ -40,7 +40,7 @@ declare namespace Gantt {
     padding?: number | undefined;
     view_mode?: viewMode | undefined;
     date_format?: string | undefined;
-    custom_popup_html?: string | ((task: EnrichedTask) => string) | undefined;
+    popup?: string | ((task: EnrichedTask) => string) | undefined;
     language?: string | undefined;
     show_expected_progress?: boolean | undefined;
     highlight_weekend?: boolean | undefined;
